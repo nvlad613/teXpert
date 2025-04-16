@@ -6,7 +6,7 @@ from src.validator.tex.traverse_nodes import traverse_nodes
 
 def main():
     run_pdf_validation("/home/vlad/PycharmProjects/latex-validator/test.pdf")
-    # run_latex_validation("/home/vlad/PycharmProjects/latex-validator/test_file.tex")
+    run_latex_validation("/home/vlad/PycharmProjects/latex-validator/test_file.tex")
 
 def run_pdf_validation(filepath):
     pdf = open_pdf(filepath)

@@ -2,6 +2,13 @@ from pymupdf import Document
 
 from src.validator.result import ValidationResult, ErrCause
 
+_HEADINGS = [
+    "СОДЕРЖАНИЕ",
+    "ТЕРМИНЫ И ОПРЕДЕЛЕНИЯ",
+    "ВВЕДЕНИЕ",
+    "ЗАКЛЮЧЕНИЕ",
+    "СПИСОК ИСПОЛЬЗУЕМЫХ ИСТОЧНИКОВ"
+]
 
 def __validate_font(block, page_num, r: ValidationResult):
     font_found = False
@@ -12,13 +19,14 @@ def __validate_font(block, page_num, r: ValidationResult):
                 return
             font_name = span.get("font", "")
             font_size = span.get("size", 0)
+            text = str(span.get("text", "")).strip().upper()
             if (not font_found) and ("timesnewroman" not in str(font_name).lower().replace(" ", "")):
                 r.add_err(
                     ErrCause.INVALID_FONT,
                     f"На странице {page_num + 1} используется шрифт {font_name}"
                 )
                 font_found = True
-            if (not font_sz_found) and (not (12 <= font_size <= 14)):
+            if (not font_sz_found) and (not text in _HEADINGS) and (not (12 <= font_size <= 14)):
                 r.add_err(
                     ErrCause.INVALID_FONT_SIZE,
                     f"На странице {page_num + 1} размер шрифта {font_size}pt вне диапазона 12-14pt."
