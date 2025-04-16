@@ -1,4 +1,5 @@
 import os
+from src.validator.pdf.open_doc import open_pdf, validate_pdf
 from src.validator.result import ValidationResult
 from src.validator.tex.parser import parse_latex_structure
 from src.validator.tex.treverse_nodes import traverse_nodes
@@ -22,10 +23,10 @@ def validate_word(filepath):
 
 
 def validate_pdf(filepath):
-    """
-    To do.
-    """
-    print(f"Soon...")
+    pdf = open_pdf(filepath)
+    result = validate_pdf(pdf)
+    print(result.warnings)
+    print(result.errors)
 
 
 def validate_files(filepaths):
