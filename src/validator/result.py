@@ -19,6 +19,8 @@ class ErrCause(Enum):
     INVALID_TEXT_ALIGNMENT = auto()
     # некорректная нумерация страниц (или ее отсутствие)
     INVALID_PAGE_NUMBERING = auto()
+    # некорректный порядок секций в документе
+    INVALID_SECTIONS_ORDER = auto()
 
 class ValidationResult:
     errors: dict[ErrCause, str]
