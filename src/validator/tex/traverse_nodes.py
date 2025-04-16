@@ -1,7 +1,7 @@
 from pylatexenc.latexwalker import LatexWalker, LatexMacroNode, LatexGroupNode, LatexEnvironmentNode, LatexCharsNode
 
 from src.validator.result import ValidationResult
-from src.validator.tex.validate_text import *
+from src.validator.tex.validate_font_style import *
 from src.validator.tex.parser import extract_mandatory_args, extract_optional_arg
 from src.validator.tex.validate_geometry import validate_geometry
 
