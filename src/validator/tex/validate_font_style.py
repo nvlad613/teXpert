@@ -23,15 +23,13 @@ def validate_font_usage(node, r: ValidationResult):
                 if args[0] != "Times New Roman":
                     r.del_warn(ErrCause.INVALID_FONT)
                 else:
-                    r.add_err(ErrCause.INVALID_FONT, f"{args[0]} уставновлен в качестве шрифта по умолчанию")
-    return False
+                    r.add_err(ErrCause.INVALID_FONT, f"{args[0]} установлен в качестве шрифта по умолчанию")
 
 def validate_font_color(node, r: ValidationResult):
     if isinstance(node, LatexMacroNode) and node.macroname in ['color', 'textcolor']:
         args = extract_mandatory_args(node)
         if args and args[0] != 'black':
             r.add_err(ErrCause.INVALID_FONT_COLOR, f"использован {args[0]} цвет для текста")
-    return False
 
 def validate_parindent(node, r: ValidationResult):
     if isinstance(node, LatexMacroNode) and node.macroname == "setlength":

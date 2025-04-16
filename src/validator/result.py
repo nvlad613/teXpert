@@ -17,6 +17,10 @@ class ErrCause(Enum):
     INVALID_LINE_SPACING = auto()
     # Выравнивание текста по ширине
     INVALID_TEXT_ALIGNMENT = auto()
+    # некорректная нумерация страниц (или ее отсутствие)
+    INVALID_PAGE_NUMBERING = auto()
+    # некорректный порядок секций в документе
+    INVALID_SECTIONS_ORDER = auto()
 
 class ValidationResult:
     errors: dict[ErrCause, str]
@@ -70,5 +74,8 @@ class ValidationResult:
     def log(self, log_str: str):
         self.log.append(log_str)
 
-    def has_err(self) -> bool:
+    def any_err(self) -> bool:
         return len(self.errors.keys()) > 0
+
+    def has_err(self, cause: ErrCause) -> bool:
+        return self.errors.get(cause) is not None
