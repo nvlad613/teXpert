@@ -1,0 +1,190 @@
+\documentclass[14pt]{extarticle} % Set the font size to 14pt
+\setlength\parindent{1.25cm} % Set the parindent to 1.25 cm
+% Packages
+\usepackage[utf8]{inputenc} % Set the UTF-8 coding
+\usepackage[russian]{babel} % Set support of Russian language
+\usepackage{amsmath} % Set support of Mathematical formulas
+\usepackage{amssymb} % Set support for extra symbols
+\usepackage[width=14cm, left=3cm]{geometry} % Set support of page dimensions
+\usepackage{fontspec} % Set for using system fonts
+\usepackage{ragged2e} % Set for advanced justification options
+\usepackage{setspace} % Set for line spacing
+\usepackage{titlesec} % Set for title settings
+\usepackage{indentfirst} % Set for indent first
+\usepackage{graphicx} % Set for image support
+\usepackage[labelformat=simple]{caption} % Set for using caption
+\usepackage[labelsep=endash]{caption} % Set the separator
+\usepackage[hidelinks]{hyperref} % Set for using hyperlinks (hide mode)
+\usepackage{enumitem} % Set for creating books list
+\usepackage{booktabs} % Set for using modern tables
+\setmainfont{Times New Roman} % Setting Times New Roman as main font
+% Page dimensions
+\geometry{
+    a4paper, % Set the paper size
+    left=30mm, % Set the left margin
+    right=15mm, % Set the right margin
+    top=20mm, % Set the top margin
+    bottom=20mm % Set the bottom margin
+}
+
+% Change figure to "Рисунок"
+\addto\captionsrussian{\renewcommand{\figurename}{Рисунок}}
+
+% Change sections
+
+% Change ToC title
+\addto\captionsrussian{
+  \renewcommand{\contentsname}%
+    {СОДЕРЖАНИЕ}%
+}
+
+% Title elements settings
+\titleformat{\section}
+ {\normalfont\bfseries\Large\raggedright\centering}{\thesection}{1em}{}
+
+\titleformat{\subsection}
+  {\normalfont\bfseries\raggedright}{\hspace{1.25cm}\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+  {\normalfont\bfseries\raggedright}{\hspace{1.25cm}\thesubsubsection}{1em}{}
+
+% New section on new page settings
+\newcommand{\newsection}[1]{
+    \clearpage
+    \section{#1}
+}
+
+\newcommand{\newsectionstar}[1]{%
+    \clearpage
+    \section*{#1} % Create an unnumbered section
+    \addcontentsline{toc}{section}{#1} % Add it to the table of contents
+}
+
+% Title information
+\title{Шаблон ВКР} % Document title in Russian
+\author{Дробыш Дмитрий Александрович} % Your name
+\date{\today} % Date
+
+\begin{document}
+\pagestyle{plain} % Set the page style to plain (gives page numbers)
+\onehalfspacing % Set the line spacing to 1.5
+\justifying % Ensure text is justified
+
+\maketitle
+\newpage
+\tableofcontents
+
+% Список сокращений и условных обозначений
+\newsectionstar{СПИСОК СОКРАЩЕНИЙ И УСЛОВНЫХ ОБОЗНАЧЕНИЙ}
+
+РН — Ракета-носитель\\
+
+НПО — Научно-Производственное Объединение\\
+
+ГКЧП — Государственный Комитет по Чрезвычайному Положению\\
+
+NASA — Национальное управление по аэронавтике и исследованию космического пространства (США)\\
+
+РКК — Ракетно-космическая корпорация\\
+
+КБ — Конструкторское Бюро\\
+
+
+% Термины и определения
+\newsectionstar{ТЕРМИНЫ И ОПРЕДЕЛЕНИЯ}
+Ракета-носитель (РН) — это специальный летательный аппарат, предназначенный для вывода полезной нагрузки (например, спутников, научных аппаратов или экипажей) на орбиту Земли или в межпланетное пространство. Ракетные носители могут быть одноразовыми или многоразовыми и обычно состоят из нескольких ступеней, каждая из которых оснащена ракетными двигателями.\\
+
+Научно-Производственное Объединение (НПО) — это организация, объединяющая научные исследования и производственные мощности для разработки и производства высокотехнологичной продукции. В контексте ракетостроения НПО часто занимаются разработкой новых технологий, проектированием ракет и космических аппаратов, а также их серийным производством.\\
+
+Государственный Комитет по Чрезвычайному Положению (ГКЧП) — это орган власти, созданный в СССР в августе 1991 года для управления страной в условиях чрезвычайной ситуации. Его деятельность была связана с попыткой сохранить советскую власть и предотвратить распад СССР. ГКЧП стал известен благодаря своему неудачному путчу, который привел к усилению демократических движений и окончательному распаду Советского Союза.\\
+
+NASA (National Aeronautics and Space Administration) — это федеральное агентство правительства США, ответственное за гражданскую аэрокосмическую программу и научные исследования в области аэронавтики и космоса. Основанное в 1958 году, NASA проводит миссии по исследованию космоса, включая пилотируемые полеты, запуск спутников и научные исследования на других планетах.
+
+Ракетно-космическая корпорация (РКК) — это организация, занимающаяся разработкой, производством и эксплуатацией ракетных систем и космических аппаратов. В России одной из наиболее известных РКК является Ракетно-космическая корпорация "Энергия", которая разрабатывает космические технологии и принимает участие в международных космических проектах.\\
+
+Конструкторское бюро (КБ) — это специализированное подразделение или организация, занимающаяся проектированием и разработкой новых технических решений, изделий и технологий. В области ракетостроения КБ разрабатывают проекты ракетных систем, космических аппаратов и других сложных технических устройств, проводя исследования и испытания для подтверждения их работоспособности.
+
+% Введение
+\newsectionstar{ВВЕДЕНИЕ}
+История ракетостроения начинается с древних времен, когда люди использовали простые устройства, такие как фейерверки и ракеты на порохе. С течением времени эти технологии развивались, что привело к созданию более сложных ракетных систем. В XX веке ракетостроение стало ключевым элементом в освоении космоса, что открыло новые горизонты для науки и техники. В данной работе будет рассмотрена эволюция ракетостроения, начиная с первых экспериментов и заканчивая современными достижениями.\\
+
+
+% Основной раздел
+\newsection{ОСНОВНОЙ РАЗДЕЛ}
+
+\subsection{ПЕРВЫЕ ШАГИ В РАКЕТОСТРОЕНИИ}
+Исторически первой известной ракетой считается китайская ракета "фейерверк", использовавшаяся в военных целях в XII веке. В Европе эксперименты с ракетами начали проводиться в XVIII веке. Однако настоящая революция в ракетостроении произошла в начале XX века благодаря работам таких ученых, как Константин Циолковский и Роберт Годдард.
+
+\subsection{СОВРЕМЕННЫЕ ДОСТИЖЕНИЯ}
+Сегодня ракетостроение продолжает развиваться с небывалой скоростью. Новые технологии, такие как многоразовые ракеты, позволяют значительно снизить стоимость космических запусков. Компании, такие как SpaceX и Blue Origin, активно работают над инновациями, которые могут изменить будущее космических исследований.
+
+SpaceX Starship изображен на рисунке~\ref{fig:starship}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{starship.png}
+    \caption{SpaceX Starship}
+    \label{fig:starship}
+\end{figure}
+
+Blue Origin New Glenn изображен на рисунке~\ref{fig:newglenn}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{newglenn.png}
+    \caption{Blue Origin New Glenn}
+    \label{fig:newglenn}
+\end{figure}
+
+% Второй раздел
+\newsection{ТЕХНИЧЕСКИЕ ХАРАКТЕРИСТИКИ SPACEX STARSHIP}
+% Пример таблицы
+В данном разделе мы представим таблицу. Как показано в таблице~\ref{tab:starship}, это пример оформления таблицы.
+
+% Пример таблицы
+\begin{table}[h]
+\centering % Центрирование таблицы
+\captionsetup{justification=raggedright, singlelinecheck=false}
+\caption{Характеристики SpaceX Starship} % Заголовок таблицы
+\label{tab:starship}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Категория} & \textbf{Описание}                              \\ \hline
+Название           & Starship                                       \\ \hline
+Разработчик        & SpaceX                                         \\ \hline
+Длина              & Около 50 м                                     \\ \hline
+Диаметр            & 9 м                                            \\ \hline
+Полезная нагрузка  & До 100 т в LEO                                 \\ \hline
+Двигатели          & 6 Raptor (3 вакуумных, 3 атмосферных)          \\ \hline
+Топливо            & Жидкий метан и кислород                        \\ \hline
+Первый полет       & Ожидается в ближайшие годы                     \\ \hline
+Основные цели      & Пилотируемые миссии на Марс, исследования Луны \\ \hline
+Текущий статус     & В стадии испытаний                             \\ \hline
+\end{tabular}
+\end{table}
+Скорость можно найти как:
+
+\begin{equation}
+	v = I \cdot g \cdot ln((m / m_f)) \label{eq:speed},
+\end{equation}
+
+где: $v$ - скорость ракеты, м/v; $I$ — удельный импульс двигателя, с; $g$ —  ускорение свободного падения на поверхности Земли, 9.81 м/с²; $m$ — начальная масса ракеты (включая топливо), кг; $m_f$ — конечная масса ракеты (без топлива), кг;
+
+% Заключение
+\newsectionstar{ЗАКЛЮЧЕНИЕ}
+История ракетостроения — это история непрерывного поиска и инноваций. От первых пороховых ракет до многоразовых космических кораблей — каждый этап развития был важен для достижения современных успехов в области космических исследований. Будущее ракетостроения обещает быть еще более захватывающим, открывая новые возможности для человечества.
+
+% Список источников
+\newsectionstar{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}
+\begin{enumerate}[label=\arabic*., % Correct label syntax
+                  left=1.25cm    % Correct left margin syntax
+		  ]
+    \RaggedRight
+
+    \item  Циолковский К.Э. Исследование мировых пространств реактивными приборами // Вестник воздухоплавания. 1911, № 19-22, 1912, №2, 3, 5-7, 9.
+
+    \item NASA: "History of Rocketry and Space Travel".  URL: \\
+    \url{https://ui.adsabs.harvard.edu/abs/1975hrst.book.....V/abstract} (дата обращения 26.02.2025).
+\end{enumerate}
+
+% Приложение
+\newsectionstar{ПРИЛОЖЕНИЕ A}
+\end{document}

@@ -1,0 +1,18 @@
+[project]
+name = "latex-validator"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Vlad",email = "klientkey200213@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pylatexenc (>=2.10,<3.0)",
+    "pymupdf (>=1.25.5,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
