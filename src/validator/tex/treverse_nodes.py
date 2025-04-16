@@ -7,7 +7,7 @@ from src.validator.tex.validate_geometry import validate_geometry
 
 
 def traverse_nodes(nodelist: list) -> ValidationResult:
-    result = ValidationResult()
+    result = ValidationResult.latex()
     __traverse_nodes(nodelist, result)
     return result
 

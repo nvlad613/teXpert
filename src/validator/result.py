@@ -23,31 +23,32 @@ class ValidationResult:
     warnings: dict[ErrCause, str]
     log: list[str]
 
-    def __init__(self):
-        self.__init_errors()
-        self.__init_warns()
-        self.__init_log()
+    def __init__(self, errors: dict[ErrCause, str], warning: dict[ErrCause, str], log: list[str]):
+        self.errors = errors
+        self.warnings = warning
+        self.log = log
 
-    def __init_errors(self):
+    @classmethod
+    def empty(cls):
+        return cls({}, {}, [])
+
+    @classmethod
+    def latex(cls):
         """
         Некоторые ошибки добавляются не по ходу проверок, а сразу при создании результата.
         В случае, если ошибка опровергается во время проверок, она удаляется через del_err()
         """
-        self.errors = {
+        errors = {
             ErrCause.INVALID_PAGE_FIELDS: "не установлены размеры полей",
             ErrCause.INVALID_PARAGRAPH_INDENT: "абзацный отступ не установлен",
             ErrCause.INVALID_FONT_SIZE: "не установлен корректный размер шрифта"
         }
-
-    def __init_warns(self):
-        """
-        Некоторые предупреждения добавляются не по ходу проверок, а сразу при создании результата.
-        В случае, если оно опровергается во время проверок, то удаляется через del_warn()
-        """
-        self.warnings = {
+        warnings = {
             ErrCause.INVALID_FONT: "не определен основной шрифт документа",
             ErrCause.INVALID_LINE_SPACING: "не уставновлен полуторный межстрочный интервал"
         }
+
+        return cls(errors, warnings, [])
 
     def __init_log(self):
         self.log = []
