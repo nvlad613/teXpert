@@ -4,21 +4,19 @@ from pymupdf import Document
 
 from src.validator.result import ValidationResult, ErrCause
 
-_TOL = 30
+_TOL = 100
 
 
 def __extract_page_number(s: str) -> int:
-    m = re.search(r"'text'\s*:\s*'([^']+)'", s)
-    if not m:
-        return 0
-
-    val = m.group(1).strip()
-    try:
+    for m in re.finditer(r"'text'\s*:\s*'([^']+)'", s):
+        val = m.group(1).strip()
         if re.fullmatch(r'[+-]?\d+', val):
-            return int(val)
-    except ValueError:
-        return 0
+            try:
+                return int(val)
+            except ValueError:
+                continue
     return 0
+
 
 def validate_inpage_stype(doc: Document, r: ValidationResult):
     for page_num in range(len(doc)):
