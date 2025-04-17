@@ -10,24 +10,38 @@ def run_validate_latex(filepath):
         latex_content = f.read()
         structure = parse_latex_structure(latex_content)
         result = traverse_nodes(structure)
-        print(f"Results for {filepath}:")
-        print("Warnings:", result.warnings)
-        print("Errors:", result.errors)
+        print(f"    Проверка latex:")
+        if len(result.warnings.keys()) == 0:
+            print("         Предупреждений нет!")
+        else:
+            print("         Предупреждения:", result.warnings.keys())
+        if len(result.warnings.keys()) == 0:
+            print("         Ошибок нет!")
+        else:
+            print("         Ошибки:", result.errors.keys())
 
 
 def run_validate_pdf(filepath):
     pdf = open_pdf(filepath)
     result = validate_pdf(pdf)
-    print(result.warnings)
-    print(result.errors)
-
+    print(f"    Проверка pdf:")
+    if len(result.warnings.keys()) == 0:
+        print("         Предупреждений нет!")
+    else:
+        print("         Предупреждения:", result.warnings.keys())
+    if len(result.warnings.keys()) == 0:
+        print("         Ошибок нет!")
+    else:
+        print("         Ошибки:", result.errors.keys())
 
 def validate_files(filepaths):
     for filepath in filepaths:
         # Check if file exists
-        if not os.path.exists(filepath):
+        if filepath is None or not os.path.exists(filepath):
             print(f"File does not exist: {filepath}")
             continue
+
+        print(f"Проверка файла {filepath}")
 
         if filepath.lower().endswith('.tex'):
             run_validate_latex(filepath)
