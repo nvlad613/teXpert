@@ -1,9 +1,8 @@
 import os
 from src.validator.pdf.open_doc import open_pdf, validate_pdf
-from src.validator.docx.start_checks import start_check_docx_file
 from src.validator.result import ValidationResult
 from src.validator.tex.parser import parse_latex_structure
-from src.validator.tex.treverse_nodes import traverse_nodes
+from src.validator.tex.traverse_nodes import traverse_nodes
 
 
 def run_validate_latex(filepath):
@@ -14,13 +13,6 @@ def run_validate_latex(filepath):
         print(f"Results for {filepath}:")
         print("Warnings:", result.warnings)
         print("Errors:", result.errors)
-
-
-def run_validate_word(filepath):
-    result = start_check_docx_file(filepath)
-    print(f"Results for {filepath}:")
-    print("Warnings:", result.warnings)
-    print("Errors:", result.errors)
 
 
 def run_validate_pdf(filepath):
@@ -39,8 +31,6 @@ def validate_files(filepaths):
 
         if filepath.lower().endswith('.tex'):
             run_validate_latex(filepath)
-        elif filepath.lower().endswith(('.doc', '.docx')):
-            run_validate_word(filepath)
 
         # Always validate PDF file if it exists
         pdf_filepath = os.path.splitext(filepath)[0] + '.pdf'
