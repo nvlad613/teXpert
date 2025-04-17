@@ -17,4 +17,6 @@ def start_check_docx_file(path: str) -> ValidationResult:
     return result
 
 
-result = start_check_docx_file()
+result = start_check_docx_file("/Users/tix/PycharmProjects/teXpert/good_docx.docx")
+result = start_check_docx_file("/Users/tix/PycharmProjects/teXpert/invalid_docx.docx")
+print(result.errors)

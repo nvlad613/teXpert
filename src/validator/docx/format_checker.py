@@ -95,7 +95,7 @@ def check_formatting(doc: docx.Document, result: ValidationResult) -> Dict[str, 
             #    тогда надо смотреть стиль параграфа и т.д.
             # 2) В реальности проверять + "Times New Roman CYR" и другие вариации
             if font.name and "Times New Roman" not in font.name:
-                result.add_err(ErrCause.INVALID_FONT, "wrong font name: " + font.name)
+                result.add_err(ErrCause.INVALID_FONT, "wrong font name: " + str(font.name))
                 results["font_check"] = False
 
             # Пример проверки размера (font.size в pt)
@@ -104,7 +104,7 @@ def check_formatting(doc: docx.Document, result: ValidationResult) -> Dict[str, 
                 # font.size is in English Metric Units (points = 1/72 inch)
                 font_size_pt = font.size.pt
                 if not (12.01 <= font_size_pt <= 14.01):
-                    result.add_err(ErrCause.INVALID_FONT_SIZE, "wrong font size: " + font.size)
+                    result.add_err(ErrCause.INVALID_FONT_SIZE, "wrong font size: " + str(font.size))
                     results["font_size_check"] = False
 
             # Пример проверки цвета (font.color.rgb)
