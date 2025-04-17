@@ -6,6 +6,16 @@ from src.validator.tex.parser import parse_latex_structure
 from src.validator.tex.treverse_nodes import traverse_nodes
 
 
+def run_validate_latex(filepath):
+    with open(filepath, encoding='utf-8') as f:
+        latex_content = f.read()
+        structure = parse_latex_structure(latex_content)
+        result = traverse_nodes(structure)
+        print(f"Results for {filepath}:")
+        print("Warnings:", result.warnings)
+        print("Errors:", result.errors)
+
+
 def run_validate_word(filepath):
     result = start_check_docx_file(filepath)
     print(f"Results for {filepath}:")
