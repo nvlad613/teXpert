@@ -1,0 +1,106 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+% -----------------------------
+% Пакеты для кириллицы и русской типографики
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+
+% Параметры страницы
+\usepackage{geometry}
+\geometry{a4paper, left=45mm, right=15mm, top=20mm, bottom=20mm}
+\usepackage{setspace}
+\onehalfspacing  % полуторный интервал
+
+% Шрифт TeX Gyre Termes (Times-подобный с более заметной жирностью)
+\usepackage{tgtermes}
+
+% Управление заголовками (section, subsection и т.д.)
+\usepackage{titlesec}
+\newcommand{\sectionfont}{\normalfont\fontsize{16pt}{14pt}\selectfont\bfseries\centering\MakeUppercase}
+\newcommand{\subsectionfont}{\normalfont\fontsize{16pt}{14pt}\selectfont\bfseries}
+\newcommand{\subsubsectionfont}{\normalfont\fontsize{16pt}{14pt}\selectfont\bfseries}
+
+\titleformat{name=\section,numberless}{\sectionfont}{}{0pt}{}   % Ненумерованные (напр. Введение)
+\titleformat{name=\section}{\sectionfont}{\thesection}{1em}{}   % Нумерованные секции
+\titleformat{\subsection}{\subsectionfont}{\thesubsection}{1em}{} 
+\titleformat{\subsubsection}{\subsubsectionfont}{\thesubsubsection}{1em}{} 
+
+% Убираем автоматический заголовок "Список литературы" в thebibliography
+% (Russian babel в классах иногда вставляет "СПИСОК ЛИТЕРАТУРЫ", поэтому переопределяем \bibname)
+\makeatletter
+\renewcommand{\bibname}{}  % Пустое, чтобы в PDF не выводилось автоматически 
+\makeatother
+
+% Нумерация страниц
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+% Настройка абзацев
+\setlength{\parindent}{1.25cm}
+
+% Настройка оглавления
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+% Заголовок "СОДЕРЖАНИЕ" по центру, капсом, жирным, 14pt
+\renewcommand{\cfttoctitlefont}{\hfill\normalfont\fontsize{14pt}{14pt}\selectfont\bfseries\MakeUppercase}
+\renewcommand{\cftaftertoctitle}{\hfill}
+
+\begin{document}
+
+% Оглавление
+\tableofcontents
+\newpage
+
+% Введение (ненумерованный раздел)
+\section*{Введение}
+\addcontentsline{toc}{section}{Введение}
+
+
+\section{Аналитический обзор}
+\subsection{Методы представления трехмерных объектов в машинном обучении}
+\subsection{Методы уменьшения размерности трехмерных объектов}
+\subsection{Альтернативные способы представления трехмерных объектов}
+
+\section{Исследование технологии T-сплайнов и их реализации}
+\subsection{Теоретические основы T-сплайнов и их свойства}
+\subsection{Sub-D как практическая реализация T-сплайнов}
+\subsection{Технология преобразования мешей в Sub-D и обратно}
+
+\section{Разработка метода снижения размерности трехмерных моделей}
+\subsection{Выбор датасета для работы}
+\subsection{Используемые алгоритмы преобразования меша в Sub-D}
+\subsection{Оценка изменения размерности данных}
+\subsection{Выбор метрик для оценки эффективности преобразования}
+
+\section{Разработка 3D-CNN для работы с уменьшенными моделями}
+\subsection{Выбор архитектуры 3D-CNN}
+\subsection{Подготовка данных на основе преобразованных 3D-моделей}
+\subsection{Реализация и обучение нейросети}
+
+\section{Экспериментальное исследование}
+\subsection{Проведение тестирования разработанной методики}
+\subsection{Сравнение с другими методами представления 3D-данных}
+\subsection{Анализ точности, производительности и эффективности подхода}
+
+\section{Выводы и перспективы дальнейших исследований}
+\subsection{Итоговые результаты работы}
+
+% ------------------------------
+% Список использованных источников
+% ------------------------------
+% Ненумерованный раздел "Список использованных источников"
+\section*{Список использованных источников}
+\addcontentsline{toc}{section}{Список использованных источников}
+
+
+
+\newpage
+% Приложение (ненумерованный)
+\section*{Приложение А}
+\addcontentsline{toc}{section}{Приложение А}
+В данном приложении может быть приведён пример листинга кода, дополнительная графика или большие таблицы.
+\end{document}
