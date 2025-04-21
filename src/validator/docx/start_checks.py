@@ -12,11 +12,12 @@ def start_check_docx_file(path: str) -> ValidationResult:
     check_formatting(doc, result)
     check_page_numbering(doc, result)
     # print(extract_and_check_headings_from_docx(doc))
-    # print(result.errors)
+    print(result.errors)
     # print(result.warnings)
+
     return result
 
 
-result = start_check_docx_file("/Users/tix/PycharmProjects/teXpert/good_docx.docx")
-result = start_check_docx_file("/Users/tix/PycharmProjects/teXpert/invalid_docx.docx")
-print(result.errors)
+# result = start_check_docx_file("/Users/tix/PycharmProjects/teXpert/good_docx.docx")
+# result = start_check_docx_file("/Users/tix/PycharmProjects/teXpert/invalid_docx.docx")
+# print(result.errors)
