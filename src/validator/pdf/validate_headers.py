@@ -4,7 +4,7 @@ from pymupdf import Document
 
 from src.validator.result import ValidationResult, ErrCause
 
-_REQUIRED_HEADINGS = [
+REQUIRED_HEADINGS = [
     "СОДЕРЖАНИЕ",
     "ТЕРМИНЫ И ОПРЕДЕЛЕНИЯ",
     "ВВЕДЕНИЕ",
@@ -41,14 +41,15 @@ def validate_headings_order(doc: Document, r: ValidationResult):
                 continue
             if top_block is None or block["bbox"][1] < top_block["bbox"][1]:
                 top_block = block
-        if top_block is not None:
+        if top_block:
             heading_text = __extract_page_header(str(top_block))
+            print(f"top block {top_block}")
             # Если заголовок совпадает - запоминаем
-            if heading_text == _REQUIRED_HEADINGS[current_heading_i]:
+            if heading_text == REQUIRED_HEADINGS[current_heading_i]:
                 current_heading_i += 1
-            elif heading_text in _REQUIRED_HEADINGS:
+            elif heading_text in REQUIRED_HEADINGS:
                 r.add_err(ErrCause.INVALID_SECTIONS_ORDER, f"секция '{heading_text}' расположена некорректно")
                 return
 
-    if current_heading_i + 1 < len(_REQUIRED_HEADINGS):
+    if current_heading_i + 1 < len(REQUIRED_HEADINGS):
         r.add_err(ErrCause.INVALID_SECTIONS_ORDER, "не все необходимые секции включены в документ")

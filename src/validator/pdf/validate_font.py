@@ -10,6 +10,8 @@ _HEADINGS = [
     "СПИСОК ИСПОЛЬЗУЕМЫХ ИСТОЧНИКОВ"
 ]
 
+_FONT_NAME = ["timesnewroman", "times-roman", "times-new-roman"]
+
 def __validate_font(block, page_num, r: ValidationResult):
     font_found = False
     font_sz_found = False
@@ -20,7 +22,7 @@ def __validate_font(block, page_num, r: ValidationResult):
             font_name = span.get("font", "")
             font_size = span.get("size", 0)
             text = str(span.get("text", "")).strip().upper()
-            if (not font_found) and ("timesnewroman" not in str(font_name).lower().replace(" ", "")) \
+            if (not font_found) and (str(font_name).lower().replace(" ", "") not in _FONT_NAME) \
                 and text.replace(" ", "") != "":
                 r.add_err(
                     ErrCause.INVALID_FONT,
